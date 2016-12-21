@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="h8A-j2-Vd9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,111 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pU-l7-BcH">
+                                <rect key="frame" x="87" y="387" width="31" height="30"/>
+                                <state key="normal" title="开始"/>
+                                <connections>
+                                    <action selector="onStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ndf-1i-N5z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHG-md-iwL">
+                                <rect key="frame" x="263" y="387" width="31" height="30"/>
+                                <state key="normal" title="暂停"/>
+                                <connections>
+                                    <action selector="onStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rWZ-VF-iwG"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tkg-4B-csc">
+                                <rect key="frame" x="33" y="149" width="308" height="2"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87t-eJ-yWe">
+                                <rect key="frame" x="33" y="97" width="53" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="jnV-Bl-MS1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100Kb/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWy-fo-Aku">
+                                <rect key="frame" x="277" y="120" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.72634698275862064" green="0.20525687831679934" blue="0.19167906877565283" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载成功~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yli-an-szo">
+                                <rect key="frame" x="16" y="240" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.12416717987635596" green="0.26195938029274279" blue="0.72634698275862064" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXp-59-oXz">
+                                <rect key="frame" x="33" y="120" width="31" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.72634698275862064" green="0.19511843118333325" blue="0.17524466345067075" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载速度：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVg-av-CWG">
+                                <rect key="frame" x="254" y="97" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="87t-eJ-yWe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="17" id="0EB-Zs-hwl"/>
+                            <constraint firstItem="zWy-fo-Aku" firstAttribute="trailing" secondItem="tkg-4B-csc" secondAttribute="trailing" id="5CO-13-liF"/>
+                            <constraint firstItem="Yli-an-szo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5ES-Bw-jx7"/>
+                            <constraint firstItem="9pU-l7-BcH" firstAttribute="baseline" secondItem="AHG-md-iwL" secondAttribute="baseline" id="CMt-00-LVm"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9pU-l7-BcH" secondAttribute="bottom" constant="250" id="H4R-mP-9Dd"/>
+                            <constraint firstItem="SXp-59-oXz" firstAttribute="leading" secondItem="tkg-4B-csc" secondAttribute="leading" id="Hly-2J-2pY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AHG-md-iwL" secondAttribute="trailing" constant="65" id="NL3-y5-Ph1"/>
+                            <constraint firstItem="87t-eJ-yWe" firstAttribute="leading" secondItem="SXp-59-oXz" secondAttribute="leading" id="OjV-IT-boA"/>
+                            <constraint firstItem="87t-eJ-yWe" firstAttribute="baseline" secondItem="OVg-av-CWG" secondAttribute="baseline" id="Ojf-Zs-Uq3"/>
+                            <constraint firstItem="tkg-4B-csc" firstAttribute="top" secondItem="SXp-59-oXz" secondAttribute="bottom" constant="8" symbolic="YES" id="P1h-wt-urO"/>
+                            <constraint firstItem="Yli-an-szo" firstAttribute="top" secondItem="tkg-4B-csc" secondAttribute="bottom" constant="89" id="Y2Z-6b-kyM"/>
+                            <constraint firstItem="Yli-an-szo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fM4-aF-8WO"/>
+                            <constraint firstItem="SXp-59-oXz" firstAttribute="top" secondItem="87t-eJ-yWe" secondAttribute="bottom" constant="2" id="frk-Mv-qJ1"/>
+                            <constraint firstItem="87t-eJ-yWe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="hJP-kx-CLo"/>
+                            <constraint firstItem="9pU-l7-BcH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="71" id="jok-Pg-qBb"/>
+                            <constraint firstItem="tkg-4B-csc" firstAttribute="centerX" secondItem="Yli-an-szo" secondAttribute="centerX" id="knU-pT-fOf"/>
+                            <constraint firstItem="OVg-av-CWG" firstAttribute="trailing" secondItem="zWy-fo-Aku" secondAttribute="trailing" id="swk-ga-rhA"/>
+                            <constraint firstItem="SXp-59-oXz" firstAttribute="baseline" secondItem="zWy-fo-Aku" secondAttribute="baseline" id="yh6-hg-eGg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ie1-Mx-Zgc"/>
+                    <connections>
+                        <outlet property="progressBar" destination="tkg-4B-csc" id="U3a-JT-YI9"/>
+                        <outlet property="progressLabel" destination="SXp-59-oXz" id="gJa-Cj-HP6"/>
+                        <outlet property="rateLabel" destination="zWy-fo-Aku" id="v04-jB-Dgo"/>
+                        <outlet property="startButton" destination="9pU-l7-BcH" id="Mwe-2X-fTs"/>
+                        <outlet property="stopButton" destination="AHG-md-iwL" id="f2T-kM-fFu"/>
+                        <outlet property="tintLabel" destination="Yli-an-szo" id="flI-97-xT4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="445.60000000000002" y="-566.26686656671666"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9U7-14-aNS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h8A-j2-Vd9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8cx-sZ-4hq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="f5v-fR-GGa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lvX-Ta-OHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-258" y="-566"/>
         </scene>
     </scenes>
 </document>

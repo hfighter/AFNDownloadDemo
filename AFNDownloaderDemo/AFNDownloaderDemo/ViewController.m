@@ -9,21 +9,47 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UILabel *tintLabel;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *stopButton;
 
 @end
 
 @implementation ViewController
+{
+    NSMutableArray *_urlArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.tintLabel.hidden = NO;
+    [self getUrlArray];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onStart:(id)sender {
+    NSLog(@"%s", __func__);
+}
+
+- (IBAction)onStop:(id)sender {
+    NSLog(@"%s", __func__);
+}
+
+- (NSArray *)getUrlArray {
+    if (!_urlArray) {
+        _urlArray = [[NSMutableArray alloc] init];
+    } else {
+        [_urlArray removeAllObjects];
+    }
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"url" ofType:@"plist"];
+    _urlArray = [NSMutableArray arrayWithContentsOfFile:path];
+    return _urlArray;
+}
 
 @end
